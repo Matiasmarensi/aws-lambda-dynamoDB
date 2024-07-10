@@ -1,24 +1,30 @@
-# "org" ensures this Service is used with the correct Serverless Framework Access Key.
 org: marensi
-# "service" is the name of this project. This will also be added to your AWS resource names.
 service: aws-lambda-crud-node
 
 provider:
   name: aws
   runtime: nodejs20.x
   region: us-east-1
-  iaRoleStatement:
+  iamRoleStatements:
     - Effect: Allow
       Action:
         - dynamodb:*
-      Resource:
-        - arn:aws:dynamodb:us-east-1:637423545478:table/TaskTable
+      Resource: "*"
 
 functions:
   api:
-    handler: handler.handler
+    handler: src/handler.handler
     events:
-      - httpApi: "*"
+      - httpApi:
+          path: /
+          method: get
+
+  createTask:
+    handler: src/addTask.addTask
+    events:
+      - httpApi:
+          path: /tasks
+          method: post
 
 resources:
   Resources:
