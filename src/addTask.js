@@ -5,7 +5,7 @@ const addTask = async (data) => {
   try {
     const { title, description } = JSON.parse(data.body);
 
-    const createdAt = new Date();
+    const createdAt = new Date().toISOString();
     const id = v4();
     const dynamoDb = new aws.DynamoDB.DocumentClient();
     const newTask = {
