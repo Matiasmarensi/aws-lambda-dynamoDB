@@ -13,6 +13,7 @@ const addTask = async (data) => {
       title,
       description,
       createdAt,
+      done: false,
     };
 
     await dynamoDb
