@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
+    "@middy/core": "^5.4.3",
+    "@middy/http-json-body-parser": "^5.4.3",
     "aws-sdk": "^2.1658.0",
     "express": "^4.19.2",
     "serverless-http": "^3.2.0",
